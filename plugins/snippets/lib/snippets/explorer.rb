@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Redcar
   class Snippets
     class Explorer < FilterListDialog

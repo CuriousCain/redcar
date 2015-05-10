@@ -70,7 +70,7 @@ module Redcar
     end
 
     def ==(other)
-      return false unless length == other.length
+      #return false unless length == other.length
       return false unless text == other.text
       entries.zip(other.entries) do |here, there|
         return false unless here.class == there.class and here == there

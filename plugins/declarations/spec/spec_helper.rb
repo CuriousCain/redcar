@@ -1,1 +1,0 @@
-Redcar.plugin_manager.load("declarations")

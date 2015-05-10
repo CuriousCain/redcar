@@ -67,9 +67,11 @@ module Redcar
       end
       
       def text
-        @text.respond_to?(:call) ? 
-          Redcar::Application::GlobalState.new.instance_eval(&@text) :
+        if @text.respond_to?(:call)
+          Redcar::Application::GlobalState.new.instance_exec(&@text)
+        else
           @text
+        end
       end
       
       def lazy_text?
@@ -96,7 +98,7 @@ module Redcar
       def checked?
         @checked and (
           @checked.respond_to?(:call) ?
-            Redcar::Application::GlobalState.new.instance_eval(&@checked) :
+            Redcar::Application::GlobalState.new.instance_exec(&@checked) :
             @checked
         )
       end

@@ -25,7 +25,7 @@ module Redcar
           if key_string =~ /Escape$/
             value += Swt::SWT::ESC
           elsif key_string =~ /Space$/
-            value += " "[0]
+            value += " "[0].to_i
           elsif key_string =~ /(F\d+)/
             value += Swt::SWT.const_get $1
           elsif key_string =~ /Page Up$/
@@ -41,7 +41,7 @@ module Redcar
           elsif key_string =~ /End$/
             value += Swt::SWT::END
           else
-            value += key_string[-1]
+            value += key_string[-1].to_i
           end
         end
         

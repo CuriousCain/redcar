@@ -169,7 +169,7 @@ module Redcar
       def connect_command_to_item(item, entry)
         if key_specifier = @keymap.command_to_key(entry.command)
           if key_string    = BindingTranslator.platform_key_string(key_specifier)
-            item.text = entry.text + "\t" + key_string
+            item.text = entry.text.to_s + "\t" + key_string
             item.set_accelerator(BindingTranslator.key(key_string))
             Menu.items[key_string] << item
           else
@@ -177,7 +177,7 @@ module Redcar
             item.text = entry.text
           end
         else
-          item.text = entry.text
+          item.text = entry.text.to_s
         end
         if entry.enabled?
           item.add_selection_listener(SelectionListener.new(entry))
