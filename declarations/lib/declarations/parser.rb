@@ -51,11 +51,11 @@ module Redcar
   YAML
 
   RUBY_YAML=<<-YAML
-  - regex:    "^[^#]*(class|module)\\s+(?:\\w*::)*(\\w+)(?:$|\\s|<)"
+  - regex:    "^[^#]*(class|module)\s+(?:\w*::)*(\w+)(?:$|\s|<)"
     capture:  2
     type:     id
     kind:     class
-  - regex:    "^[^#]*def (self\\.)?(\\w+[?!=]?)(\\(.*\\))?(\\s|\\;|\\z|\\b)"
+  - regex:    "^[^#]*def (self\.)?(\w+[?!=]?)(\(.*\))?(\s|\;|\z|\b)"
     capture:  2
     type:     id
     kind:     method
@@ -63,15 +63,15 @@ module Redcar
     capture:  2
     type:     id-list
     kind:     attribute
-  - regex:    "^[^#]*alias\\s+:(\\w+)"
+  - regex:    "^[^#]*alias\s+:(\w+)"
     capture:  1
     type:     id
     kind:     alias
-  - regex:    "^[^#]*alias_method\\s+:(\\w+[?!]?)"
+  - regex:    "^[^#]*alias_method\s+:(\w+[?!]?)"
     capture:  1
     type:     id
     kind:     alias
-  - regex:    "^\\s*([A-Z]\\w*)\\s*="
+  - regex:    "^\s*([A-Z]\w*)\s*="
     capture:  1
     type:     id
     kind:     assignment
@@ -132,14 +132,14 @@ module Redcar
   class Declarations
     class Parser
       DEFINITIONS = {
-        /_steps\.rb$/ => YAML.load(CUKE_YAML) + YAML.load(RUBY_YAML),
-        /_spec\.rb$/ => YAML.load(RUBY_YAML) + YAML.load(SPEC_YAML),
-        /\.rb$/       => YAML.load(RUBY_YAML),
-        /\.java$/     => YAML.load(JAVA_YAML),
-        /\.groovy$/   => YAML.load(GROOVY_YAML),
-        /\.php$/      => YAML.load(PHP_YAML),
-        /\.js$/       => YAML.load(JS_YAML),
-        /\.feature$/  => YAML.load(CUKE_YAML)
+        #/_steps\.rb$/ => YAML.load(CUKE_YAML) + YAML.load(RUBY_YAML),
+        #/_spec\.rb$/ => YAML.load(RUBY_YAML) + YAML.load(SPEC_YAML),
+        /\.rb$/       => YAML.load(RUBY_YAML)
+        #/\.java$/     => YAML.load(JAVA_YAML),
+        #/\.groovy$/   => YAML.load(GROOVY_YAML),
+        #/\.php$/      => YAML.load(PHP_YAML),
+        #/\.js$/       => YAML.load(JS_YAML),
+        #/\.feature$/  => YAML.load(CUKE_YAML)
       }
 
       def self.definitions

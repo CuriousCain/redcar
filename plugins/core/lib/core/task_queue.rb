@@ -6,7 +6,7 @@ module Redcar
     attr_reader :in_process, :mutex
     
     def initialize
-      @executor = java.util.concurrent.Executors.newSingleThreadExecutor
+      @executors = java.util.concurrent.Executors
       @mutex    = Mutex.new
       @pending   = []
       @completed = []
@@ -18,7 +18,9 @@ module Redcar
         @pending << task
         task._queue        = self
         task.enqueue_time = Time.now
-        future = @executor.submit(task)
+        puts(task)
+        executor = @executors.newSingleThreadExecutor()
+        executor.submit task
       end
     end
     

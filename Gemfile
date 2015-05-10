@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "git", :git => 'git://github.com/redcar/ruby-git.git'
 gem "lucene", "~>0.5.0.beta.1"
-gem "jruby-openssl"
+#gem "jruby-openssl"
 gem "ruby-blockcache"
 gem "bouncy-castle-java"
 gem "swt"
