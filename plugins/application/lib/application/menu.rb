@@ -14,7 +14,7 @@ module Redcar
       "Project" => "&Project",
       "Debug"   => "&Debug",
       "View"    => "&View",
-      "Plugins" => "P&lugins",
+      "Plugins" => "&Plugins",
       "Bundles" => "&Bundles",
       "Help"    => "&Help"
     }

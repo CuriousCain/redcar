@@ -89,39 +89,6 @@ module Redcar
       end
     end
 
-    class GenerateGrammarsMenu
-      def self.on(builder)
-        builder.item "Ruby", AboutCommand
-        builder.item "Java", AboutCommand
-        builder.item "Python", AboutCommand
-      end
-    end
-
-    class AboutCommand < Command
-      def execute
-        new_tab = Top::OpenNewEditTabCommand.new.run
-        new_tab.document.text = <<-TXT
-About: Redcar\nVersion: #{Redcar::VERSION}
-Ruby Version: #{RUBY_VERSION}
-Jruby version: #{JRUBY_VERSION}
-Redcar.environment: #{Redcar.environment}
-        TXT
-        new_tab.edit_view.reset_undo
-        new_tab.document.set_modified(false)
-        new_tab.title= 'About'
-      end
-    end
-
-    class ChangelogCommand < Command
-      def execute
-        new_tab = Top::OpenNewEditTabCommand.new.run
-        new_tab.document.text = File.read(File.join(File.dirname(__FILE__), "..", "..", "CHANGES"))
-        new_tab.edit_view.reset_undo
-        new_tab.edit_view.document.set_modified(false)
-        new_tab.title = 'Changes'
-      end
-    end
-
     class PrintScopeTreeCommand < Command
       def execute
         puts tab.edit_view.controller.mate_text.parser.root.pretty(0)
@@ -984,8 +951,6 @@ Redcar.environment: #{Redcar.environment}
         end
         sub_menu "Help", :priority => :last do
           group(:priority => :last) do
-            item "About", AboutCommand
-            item "New In This Version", ChangelogCommand
             separator
             item "Check for Updates", :command => Application::ToggleCheckForUpdatesCommand,
                                       :type => :check,
