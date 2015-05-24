@@ -16,6 +16,15 @@ module Redcar
             item 'Keyboard Shortcuts', :command => ViewShortcutsCommand
             item 'About', :command => AboutCommand
           end
+
+          separator
+
+          group(:priority => :last) do
+            item 'Check for updates', :command => Redcar::Application::ToggleCheckForUpdatesCommand,
+                 :type => :check,
+                 :checked => lambda { Redcar::Application::Updates.check_for_updates? }
+            item 'Update Available', :command => Redcar::Application::OpenUpdateCommand
+          end
         end
       end
     end

@@ -949,15 +949,6 @@ module Redcar
             Textmate.attach_menus(self)
           end
         end
-        sub_menu "Help", :priority => :last do
-          group(:priority => :last) do
-            separator
-            item "Check for Updates", :command => Application::ToggleCheckForUpdatesCommand,
-                                      :type => :check,
-                                      :checked => lambda { Application::Updates.check_for_updates? }
-            item "Update Available",  Application::OpenUpdateCommand
-          end
-        end
       end
     end
 
