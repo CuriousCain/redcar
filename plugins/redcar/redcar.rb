@@ -1,3 +1,9 @@
+require 'jrubyfx'
+require 'java'
+java_import javafx.event.EventHandler
+java_import javafx.stage.Stage
+java_import javafx.stage.StageStyle
+
 
 module Redcar
   def self.safely(text=nil)
@@ -23,6 +29,26 @@ module Redcar
       end
     end
     result
+  end
+
+  module JApplication
+    class App < JRubyFX::Application
+      def start(stage)
+        stage.init_style StageStyle::TRANSPARENT
+        stage.height = 1
+        stage.width = 1
+        stage.show
+        stage.set_on_close_request(CloseRequest.new)
+      end
+    end
+
+    class CloseRequest
+      include EventHandler
+
+      def handle(e)
+        e.consume
+      end
+    end
   end
 
   module Top
@@ -979,6 +1005,10 @@ module Redcar
     end
 
     def self.start(args=[])
+      Thread.new do
+        JApplication::App.launch
+      end
+
       begin
         Redcar.log.info("startup milestone: loading plugins took #{Time.now - Redcar.process_start_time}")
         Redcar.update_gui do
