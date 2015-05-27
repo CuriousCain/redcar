@@ -1,6 +1,6 @@
 require 'help/view_controller'
 require 'help/help_tab'
-require 'help/subitems/about'
+require 'help/subitems/about/about'
 require 'help/subitems/submitabug'
 require 'help/subitems/onlinehelp'
 require 'help/subitems/viewshortcuts'

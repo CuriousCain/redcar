@@ -221,7 +221,7 @@ module Redcar
   ## Starts the GUI.
   def self.pump
     return if Redcar.no_gui_mode?
-    
+
     Redcar.gui.start
   end
   
