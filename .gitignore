@@ -38,3 +38,5 @@ plugins/scm_svn/features/fixtures
 tmp
 
 vendor/
+.idea/
+.jrubyfx_cache/
