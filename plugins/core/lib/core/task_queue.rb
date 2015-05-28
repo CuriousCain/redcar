@@ -4,7 +4,7 @@ module Redcar
     MAX_COMPLETED_LENGTH = 20
     
     attr_reader :in_process, :mutex
-    
+
     def initialize
       @executors = java.util.concurrent.Executors
       @mutex    = Mutex.new
@@ -19,8 +19,9 @@ module Redcar
         task._queue        = self
         task.enqueue_time = Time.now
         puts(task)
-        executor = @executors.newSingleThreadExecutor()
-        executor.submit task
+
+        @executor = @executors.new_single_thread_executor
+        @executor.submit task
       end
     end
     
@@ -38,7 +39,9 @@ module Redcar
         
     def stop
       @mutex.synchronize do
-        @executor.shutdown_now
+        if @executor
+          @executor.shutdown_now
+        end
       end
     end
     
