@@ -1,8 +1,8 @@
 require 'java'
 
-import org.jruby.parser.Parser
-import org.jruby.parser.ParserConfiguration
-import org.jruby.CompatVersion
+java_import org.jruby.parser.Parser
+java_import org.jruby.parser.ParserConfiguration
+java_import org.jruby.CompatVersion
 
 module Redcar
   class Ruby
