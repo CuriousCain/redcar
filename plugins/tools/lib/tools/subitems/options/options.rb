@@ -1,7 +1,8 @@
 require 'jrubyfx'
 require 'java'
+require_relative 'keybindings/keybindings'
 
-fxml_root File.dirname(__FILE__)
+fxml_root __dir__
 
 java_import java.lang.Runnable
 java_import javafx.application.Platform
@@ -48,17 +49,12 @@ class OptionsItemListener
   end
 
   def changed(observable, old_value, new_value)
-    puts "OLD: #{old_value}" unless old_value.nil?
-    puts "NEW: #{new_value}"
-    puts "OBS: #{observable}"
-
     @options_view.get_children.clear
 
-    ap = AnchorPane.new
-    l = Label.new 'PLACEHOLDER PLACEHOLDER PLACEHOLDER'
-    ap.get_children.add l
-
-    @options_view.get_children.add ap
+    case new_value.get_value
+      when 'Keybindings'
+        @options_view.get_children.add KeybindingsController.new
+    end
 
     puts "CHILDREN: #{@options_view.get_children}"
   end
