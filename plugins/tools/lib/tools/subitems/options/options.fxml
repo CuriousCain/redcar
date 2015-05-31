@@ -4,25 +4,40 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane fx:id="optionsTree" minHeight="0.0" minWidth="175" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TreeView style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent;" fx:id="optionsTreeView" layoutX="-1.0" layoutY="-2.0" prefHeight="400.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TreeView fx:id="optionsTreeView" layoutX="-1.0" layoutY="-2.0" prefHeight="400.0" prefWidth="175.0" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <root>
-                          <TreeItem value="ROOT" fx:id="rootItem" expanded="true">
+                          <TreeItem fx:id="rootItem" expanded="true" value="ROOT">
                               <children>
-                                  <TreeItem value="Keybindings" fx:id="keybindingsItem" />
-                                  <TreeItem value="Appearance" fx:id="appearanceItem" />
+                                  <TreeItem fx:id="keybindingsItem" value="Keybindings" />
+                                  <TreeItem fx:id="appearanceItem" value="Appearance" />
                               </children>
                           </TreeItem>
                       </root>
                   </TreeView>
                </children>
             </AnchorPane>
-          <AnchorPane fx:id="optionsView" minHeight="0.0" minWidth="175" prefHeight="160.0" prefWidth="100.0" />
+          <AnchorPane minHeight="0.0" minWidth="175" prefHeight="501.0" prefWidth="557.0">
+               <children>
+                  <SplitPane dividerPositions="0.9339080459770115" layoutX="119.0" layoutY="229.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane fx:id="optionsView" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+                      <AnchorPane maxHeight="40" minHeight="40" minWidth="0.0" prefHeight="90.0" prefWidth="160.0">
+                           <children>
+                              <Button onAction="#cancel_button_clicked" fx:id="cancelButton" layoutX="489.0" layoutY="13.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="60" text="Cancel" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="5.0" />
+                              <Button fx:id="applyButton" layoutX="435.0" layoutY="13.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="50" text="Apply" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="70.0" />
+                              <Button fx:id="okButton" layoutX="379.0" layoutY="13.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="50" text="OK" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="124.0" />
+                           </children>
+                      </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+          </AnchorPane>
         </items>
       </SplitPane>
    </children>

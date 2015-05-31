@@ -39,6 +39,10 @@ class OptionsController
     @optionsTreeView.set_show_root false
     @optionsTreeView.get_selection_model.selected_item_property.add_listener OptionsItemListener.new(@optionsView)
   end
+
+  def cancel_button_clicked
+    @cancelButton.get_scene.get_window.close
+  end
 end
 
 class OptionsItemListener
@@ -55,7 +59,5 @@ class OptionsItemListener
       when 'Keybindings'
         @options_view.get_children.add KeybindingsController.new
     end
-
-    puts "CHILDREN: #{@options_view.get_children}"
   end
 end
