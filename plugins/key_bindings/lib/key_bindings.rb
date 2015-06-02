@@ -1,4 +1,4 @@
-
+java_import java.lang.Runnable
 # $:.push(File.expand_path(File.join(File.dirname(__FILE__),
 #   "vendor", "activesupport-3.0.3", "lib")))
 #
@@ -32,7 +32,15 @@ module Redcar
     def self.add_key_binding(key, command)
       key_binding_prefs[key] = command
       storage.save
-      #Redcar.app.refresh_menu! TODO: put key change on SWT UI thread ASAP!
+      ApplicationSWT.display.asyncExec Menu_Refresh_Thread.new
+    end
+  end
+
+  class Menu_Refresh_Thread
+    include Runnable
+
+    def run
+      Redcar.app.refresh_menu!
     end
   end
 end
