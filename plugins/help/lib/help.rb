@@ -1,9 +1,6 @@
-require 'help/view_controller'
-require 'help/help_tab'
 require 'help/subitems/about/about'
 require 'help/subitems/submitabug'
 require 'help/subitems/onlinehelp'
-require 'help/subitems/viewshortcuts'
 
 module Redcar
   class Help
@@ -13,7 +10,6 @@ module Redcar
           group(:priority => :first) do
             item 'Online Help', :command => OnlineHelpCommand
             item 'Submit a Bug', :command => SubmitABugCommand
-            item 'Keyboard Shortcuts', :command => ViewShortcutsCommand
             item 'About', :command => AboutCommand
           end
 
