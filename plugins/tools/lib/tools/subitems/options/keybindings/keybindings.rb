@@ -9,6 +9,7 @@ java_import javafx.util.Callback
 java_import javafx.util.StringConverter
 java_import javafx.scene.control.cell.TextFieldTableCell
 java_import javafx.scene.input.KeyEvent
+java_import javafx.scene.input.KeyCode
 java_import javafx.event.EventHandler
 
 class KeybindingsController < AnchorPane
@@ -18,7 +19,7 @@ class KeybindingsController < AnchorPane
     data_list = FXCollections.observable_array_list
 
     Redcar.app.main_keymap.map.each do |k, v|
-      data_list.add({ :keys => clean_name(v), :values => k })
+      data_list.add({ :keys => clean_name(v), :values => k, :unclean_keys => v })
     end
 
     key_table = TableView.new data_list
@@ -48,10 +49,13 @@ class KeybindingsController < AnchorPane
     shortcut_column.set_cell_value_factory MapValueFactory.new :values
     shortcut_column.set_cell_factory Cell_Factory_For_Map.new
 
+    shortcut_column.set_on_edit_commit Shortcut_On_Edit_Commit.new
+
     shortcut_column
   end
 
   def clean_name(command)
+    p "COMMAND: #{command}"
     name = command.to_s.sub("Command","")
     index = name.rindex("::")
     unless index.nil?
@@ -64,12 +68,34 @@ end
 class Shortcut_Event_Handler
   include EventHandler
 
+  def initialize
+    @key_combo = []
+  end
+
   def handle(e)
-    puts e.code
+    if e.code == KeyCode::ENTER
+      new_binding = @key_combo.join '+'
+      e.get_source.update_item new_binding, false
 
-    #e.get_source.update_item 'TEST!', false
+      @key_combo.clear
+    elsif e.code == KeyCode::ESCAPE
+      @key_combo.clear
+    else
+      @key_combo.push e.code
+    end
+  end
+end
 
-    e.consume
+class Shortcut_On_Edit_Commit
+  include EventHandler
+
+  def handle(e)
+    p e.get_table_view.get_items.get(e.get_table_position.get_row)[:values] = e.get_new_value
+
+    command = e.get_table_view.get_items.get(e.get_table_position.get_row)[:unclean_keys]
+    new_key_combo = e.get_table_view.get_items.get(e.get_table_position.get_row)[:values]
+
+    Redcar::KeyBindings.add_key_binding new_key_combo, command
   end
 end
 

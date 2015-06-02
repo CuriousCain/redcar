@@ -12,7 +12,7 @@ module Redcar
     def self.user_keybindings
       key_bindings = key_binding_prefs.inject({}) do |h, (key, command_class)|
         begin
-          h[key] = eval(command_class)
+          h[key] = command_class
         rescue
           Redcar.log.warn "invalid key binding from \"#{key}\" to #{command_class.inspect} in file \"#{@storage.send(:path)}\""
         end
@@ -32,7 +32,7 @@ module Redcar
     def self.add_key_binding(key, command)
       key_binding_prefs[key] = command
       storage.save
-      Redcar.app.refresh_menu!
+      #Redcar.app.refresh_menu!
     end
   end
 end
