@@ -32,7 +32,7 @@ module Redcar
     def self.add_key_binding(key, command)
       key_binding_prefs[key] = command
       storage.save
-      #Redcar.app.refresh_menu!
+      #Redcar.app.refresh_menu! TODO: put key change on SWT UI thread ASAP!
     end
   end
 end
