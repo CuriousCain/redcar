@@ -14,15 +14,15 @@ module Redcar
     end
 
     def link(key_string, command)
-      @map[key_string] = command
+      @map[command] = key_string
     end
 
     def command(key_string)
-      @map[key_string]
+      p @map.invert[key_string]
     end
 
     def command_to_key(command)
-      @map.invert[command]
+      @map[command]
     end
 
     def length

@@ -19,13 +19,14 @@ class KeybindingsController < AnchorPane
     data_list = FXCollections.observable_array_list
 
     Redcar.app.main_keymap.map.each do |k, v|
-      data_list.add({ :keys => clean_name(v), :values => k, :unclean_keys => v })
+      data_list.add({ :keys => clean_name(k), :values => v, :unclean_keys => k })
     end
 
     key_table = TableView.new data_list
     key_table.set_editable true
     key_table.set_column_resize_policy TableView::CONSTRAINED_RESIZE_POLICY
     key_table.set_pref_width 400
+    key_table.set_pref_height 600
 
     action_column = setup_action_column
     shortcut_column = setup_shortcut_column
@@ -55,7 +56,6 @@ class KeybindingsController < AnchorPane
   end
 
   def clean_name(command)
-    p "COMMAND: #{command}"
     name = command.to_s.sub("Command","")
     index = name.rindex("::")
     unless index.nil?

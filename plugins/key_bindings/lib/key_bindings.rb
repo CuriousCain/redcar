@@ -10,9 +10,9 @@ module Redcar
   class KeyBindings
     
     def self.user_keybindings
-      key_bindings = key_binding_prefs.inject({}) do |h, (key, command_class)|
+      key_bindings = key_binding_prefs.inject({}) do |h, (command_class, key)|
         begin
-          h[key] = command_class
+          h[command_class] = key
         rescue
           Redcar.log.warn "invalid key binding from \"#{key}\" to #{command_class.inspect} in file \"#{@storage.send(:path)}\""
         end
@@ -30,7 +30,7 @@ module Redcar
     end
     
     def self.add_key_binding(key, command)
-      key_binding_prefs[key] = command
+      key_binding_prefs[command] = key
       storage.save
       ApplicationSWT.display.asyncExec Menu_Refresh_Thread.new
     end
