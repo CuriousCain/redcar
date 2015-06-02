@@ -90,12 +90,23 @@ class Shortcut_On_Edit_Commit
   include EventHandler
 
   def handle(e)
-    p e.get_table_view.get_items.get(e.get_table_position.get_row)[:values] = e.get_new_value
+    new_combo = correct_modifiers(e.get_new_value)
+
+    e.get_table_view.get_items.get(e.get_table_position.get_row)[:values] = new_combo
 
     command = e.get_table_view.get_items.get(e.get_table_position.get_row)[:unclean_keys]
     new_key_combo = e.get_table_view.get_items.get(e.get_table_position.get_row)[:values]
 
     Redcar::KeyBindings.add_key_binding new_key_combo, command
+  end
+
+  def correct_modifiers(uppercase_modifiers)
+    key_combo = uppercase_modifiers
+    key_combo.sub! 'CONTROL', 'Ctrl'
+    key_combo.sub! 'SHIFT', 'Shift'
+    key_combo.sub! 'ALT', 'Alt'
+
+    key_combo
   end
 end
 
