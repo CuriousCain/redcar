@@ -24,11 +24,11 @@ describe BundleEditor do
     before(:each) do
       create_fixtures
       @bundle = Bundle.new(fake_bundle)
-      @app = mock
-      Redcar.stub!(:app).and_return(@app)
-      @app.stub!(:windows).and_return([])
-      Redcar::Textmate.stub!(:user_bundle_dir).and_return(textmate_fixtures)
-      Redcar::Textmate.stub!(:all_bundles).and_return([@bundle])
+      @app = Redcar::Application.new
+      allow(Redcar).to receive(:app).and_return(@app)
+      allow(@app).to receive(:windows).and_return([])
+      allow(Redcar::Textmate).to receive(:user_bundle_dir).and_return(textmate_fixtures)
+      allow(Redcar::Textmate).to receive(:all_bundles).and_return([@bundle])
     end
 
     after(:each) do
@@ -60,7 +60,7 @@ describe BundleEditor do
       file = write_file('snippet','.tmSnippet',xml)
       snippet = Snippet.new(file.path,@bundle.name,@bundle.uuid)
       BundleEditor.add_snippet_to_bundle snippet, @bundle
-      @bundle.snippets.include?(snippet).should be_true
+      @bundle.snippets.include?(snippet).should be true
     end
 
     it "should update an existing bundle" do
@@ -86,7 +86,7 @@ describe BundleEditor do
       contact = "Joe Shmoe"
       email   = "joe@shmoe.com"
       BundleEditor.update_bundle new_bundle, name, desc, contact, email
-      File.exists?(new_bundle.path).should be_true
+      File.exists?(new_bundle.path).should be true
       new_bundle.name.should          == name
       new_bundle.description.should   == desc
       new_bundle.contact_name.should  == contact
@@ -99,7 +99,7 @@ describe BundleEditor do
       size = @bundle.snippets.size
       BundleEditor.delete_snippet(@bundle, @bundle.snippets.first)
       @bundle.snippets.size.should == size - 1
-      @bundle.deleted.include?(uuid).should be_true
+      @bundle.deleted.include?(uuid).should be true
       @bundle.main_menu['items'].size.should == size - 1
     end
 
@@ -139,7 +139,7 @@ describe BundleEditor do
       BundleEditor.create_submenu(name2,@bundle,sub.first)
       sub2 = @bundle.sub_menus.detect {|k,v| v['name'] == name2 }
       sub2.should_not be_nil
-      sub[1]['items'].include?(sub2.first).should be_true
+      sub[1]['items'].include?(sub2.first).should be true
     end
 
     it "should rename submenus" do
