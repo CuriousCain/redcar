@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Redcar::Application do
   it "has a name" do
-    Redcar::Application::NAME.not_to be nil
+    expect(Redcar::Application::NAME).not_to be nil
   end
   
   it "has a default instance" do
@@ -17,7 +17,7 @@ describe Redcar::Application do
     
     it "creates a new window" do
       @app.new_window
-      @app.windows.length.should == 1
+      expect(@app.windows.length).to be 1
     end
   end
 end

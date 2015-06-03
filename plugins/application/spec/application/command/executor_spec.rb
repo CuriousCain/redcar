@@ -8,7 +8,7 @@ class Redcar::Command
     end
     
     before do
-      Executor.stub!(:current_environment).and_return({:current_environment => 1})
+      allow(Executor).to receive(:current_environment).and_return({:current_environment => 1})
       Redcar.app = FakeApp.new
       Redcar.app.history = History.new
     end
@@ -33,7 +33,7 @@ class Redcar::Command
   
       it "should call execute on the Command" do
         @executor.execute
-        $spec_executor_ran_command.should be_true
+        $spec_executor_ran_command.should be true
       end
     
       it "should add the command to the History" do

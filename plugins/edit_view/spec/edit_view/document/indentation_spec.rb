@@ -55,7 +55,7 @@ RUBY
 def foo
 RUBY
         ind = Redcar::Document::Indentation.new(@doc, 4, true)
-        @doc.should_receive(:replace).with(0, 0, "    ")
+        expect(@doc).to receive(:replace).with(0, 0, "    ")
         ind.set_level(0, 1)
       end
   
@@ -64,7 +64,7 @@ RUBY
 def foo
 RUBY
         ind = Redcar::Document::Indentation.new(@doc, 4, true)
-        @doc.should_receive(:replace).with(0, 0, "        ")
+        expect(@doc).to receive(:replace).with(0, 0, "        ")
         ind.set_level(0, 2)
       end
   
@@ -73,7 +73,7 @@ RUBY
         def foo
 RUBY
         ind = Redcar::Document::Indentation.new(@doc, 4, true)
-        @doc.should_receive(:replace).with(0, 8, "    ")
+        expect(@doc).to receive(:replace).with(0, 8, "    ")
         ind.set_level(0, 1)
       end
     end
@@ -84,7 +84,7 @@ RUBY
 def foo
 RUBY
         ind = Redcar::Document::Indentation.new(@doc, 4, false)
-        @doc.should_receive(:replace).with(0, 0, "\t")
+        expect(@doc).to receive(:replace).with(0, 0, "\t")
         ind.set_level(0, 1)
       end
   
@@ -93,7 +93,7 @@ RUBY
 		def foo
 RUBY
         ind = Redcar::Document::Indentation.new(@doc, 4, false)
-        @doc.should_receive(:replace).with(0, 2, "\t")
+        expect(@doc).to receive(:replace).with(0, 2, "\t")
         ind.set_level(0, 1)
       end
       
@@ -102,7 +102,7 @@ RUBY
 def foo
 RUBY
         ind = Redcar::Document::Indentation.new(@doc, 4, false)
-        @doc.should_receive(:replace).with(0, 0, "\t\t")
+        expect(@doc).to receive(:replace).with(0, 0, "\t\t")
         ind.set_level(0, 2)
       end
     end
