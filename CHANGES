@@ -12,6 +12,19 @@ Version 1.0 (TBA)
  * Add windows batch file for easily starting redcar with arguments (Chad Gorshing)
  * Close tab when clicked with the middle mouse button (Delisa Mason)
 
+Version 0.14.4 (10th May 2015 - 3rd June 2015)
+================================
+ * Begin transition to JavaFX (Joel Lord)
+ * Implement Options menu (Joel Lord)
+ * Fix bugs from old versions of JRuby and libraries (Joel Lord)
+ * Implement working keybindings in options menu (Joel Lord)
+ * Add JavaFX stage to act as root FX UI hook (Joel Lord)
+ * Remove use of XULrunner (Joel Lord)
+ * Use official ruby-git gem (Joel Lord)
+ * Push version 0.14.4 (Joel Lord)
+ * Remove now unused 'help menu' files (Joel Lord)
+ * Include changes in license file to show the project's revival and major changes (Joel Lord)
+
 Version 0.13 (21st January 2012)
 ================================
 

@@ -66,12 +66,7 @@ You must have Java installed. On Ubuntu, you can install `openjdk-7-jre` if you 
     rake init
     ruby bin/redcar
 
-## Problems?
-
-* Irc at #redcar on irc.freenode.net
-* Mailing list at http://groups.google.com/group/redcar-editor
-
 ## License
 
-Redcar is copyright 2007-2012 Daniel Lucraft and contributors.
-It is licensed under the GPLv2. See the included LICENSE file for details.
+Redcar is copyright 2007-2012 Daniel Lucraft and contributors, 2015 Joel Lord.
+It is licensed under the GPLv2. See the included LICENSE file for more details.
