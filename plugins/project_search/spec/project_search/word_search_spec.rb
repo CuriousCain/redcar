@@ -3,7 +3,7 @@ require "spec_helper"
 
 describe ProjectSearch::WordSearch do
   after do
-    FileUtils.rm_rf(project_search_fixture_dir + "/.redcar")
+    FileUtils.rm_rf(project_search_fixture_dir)
     ProjectSearch.indexes.clear
   end
   
