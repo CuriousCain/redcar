@@ -2,7 +2,7 @@
 require "spec_helper"
 
 describe ProjectSearch::WordSearch do
-  after do
+  after(:all) do
     FileUtils.rm_rf(project_search_fixture_dir + "/.redcar")
     ProjectSearch.indexes.clear
   end
@@ -113,8 +113,8 @@ describe ProjectSearch::WordSearch do
     
     it "should return post context for hits right after one another" do
       results = make_search("xxx", true, 2).results
-      results[0].post_context.should == ["ccc xxx", "ddd"]
-      results[1].post_context.should == ["ddd", "eee xxx"]
+      expect(results[0].post_context).to eq(["ccc xxx", "ddd"])
+      expect(results[1].post_context).to eq(["ddd", "eee xxx"])
     end
   end
   
