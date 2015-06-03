@@ -8,10 +8,10 @@ describe BundleEditor do
     java_import "java.util.UUID"
     id = BundleEditor.generate_id
     begin
-      UUID.fromString(id).is_a?(UUID).should be_true
+      UUID.fromString(id).is_a?(UUID).should be true
     rescue Exception => e
       p e.message
-      false.should be_true
+      false.should be true
     end
   end
 

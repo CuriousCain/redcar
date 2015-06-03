@@ -86,7 +86,7 @@ describe Redcar::ApplicationSWT::Gradient do
   context "when constructed with stop position below 0" do
     
     it "should raise an ArgumentError" do
-      expect{ Redcar::ApplicationSWT::Gradient.new( -999 => "#FFFFFF") }.should raise_error(ArgumentError)
+      expect { Redcar::ApplicationSWT::Gradient.new( -999 => "#FFFFFF") }.should raise_error(ArgumentError)
     end
     
   end
@@ -94,7 +94,7 @@ describe Redcar::ApplicationSWT::Gradient do
   context "when constructed with stop position above 100" do
     
     it "should raise an ArgumentError" do
-      expect{ Redcar::ApplicationSWT::Gradient.new( 999 => "#FFFFFF") }.should raise_error(ArgumentError)
+      expect { Redcar::ApplicationSWT::Gradient.new( 999 => "#FFFFFF") }.should raise_error(ArgumentError)
     end
     
   end

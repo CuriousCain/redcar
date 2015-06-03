@@ -18,25 +18,25 @@ describe Redcar::Plist do
     end
 
     it "should create Hashes" do
-      @plist.is_a?(Hash).should be_true
+      @plist.is_a?(Hash).should be true
     end
 
     it "should create Arrays" do
       @plist['fruit'].should_not be_nil
-      @plist['fruit'].is_a?(Array).should be_true
+      @plist['fruit'].is_a?(Array).should be true
       @plist['fruit'].size.should == 3
     end
 
     it "should create Strings" do
       @plist['type'].should_not be_nil
-      @plist['type'].is_a?(String).should be_true
+      @plist['type'].is_a?(String).should be true
     end
   end
 
   describe "export Ruby property list" do
     it "should turn a ruby plist into xml" do
       @export.should_not be_nil
-      @export.is_a?(String).should be_true
+      @export.is_a?(String).should be true
     end
 
     it "should retain original format" do

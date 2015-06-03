@@ -19,11 +19,11 @@ class Redcar::Project
     
     describe "for a test file" do
       it "tells you it exists" do
-        @mirror.exists?.should be_true
+        @mirror.exists?.should be true
       end
       
       it "tells you it has changed" do
-        @mirror.changed?.should be_true
+        @mirror.changed?.should be true
       end
       
       it "lets you get the contents of the file" do
@@ -49,7 +49,7 @@ class Redcar::Project
         end
         
         it "tells you it has not changed" do
-          @mirror.changed?.should be_false
+          @mirror.changed?.should be false
         end
         
         describe "and since committed" do
@@ -58,7 +58,7 @@ class Redcar::Project
           end
           
           it "tells you it has not changed" do
-            @mirror.changed?.should be_false
+            @mirror.changed?.should be false
           end
         end
         
@@ -69,7 +69,7 @@ class Redcar::Project
           end
           
           it "tells you it has changed" do
-            @mirror.changed?.should be_true
+            @mirror.changed?.should be true
           end
           
           describe "and since committed" do
@@ -78,7 +78,7 @@ class Redcar::Project
             end
             
             it "tells you it has not changed" do
-              @mirror.changed?.should be_false
+              @mirror.changed?.should be false
             end
           end
         end
@@ -87,7 +87,7 @@ class Redcar::Project
     
     describe "for a nonexistent file" do
       it "tells you if a file doesn't exist" do
-        FileMirror.new("nontestfile").exists?.should be_false
+        FileMirror.new("nontestfile").exists?.should be false
       end
       
       it "returns an empty string for the contents" do

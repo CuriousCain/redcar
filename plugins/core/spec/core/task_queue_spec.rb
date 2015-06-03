@@ -69,21 +69,21 @@ describe Redcar::TaskQueue do
       it "should tell you about tasks that have not been started yet" do
         @q.submit(t1 = BlockingTask.new(:a))
         @q.submit(t2 = BlockingTask.new(:b))
-        @q.pending.include?(t2).should be_true
+        @q.pending.include?(t2).should be true
       end
       
       it "should not include in process tasks" do
         @q.submit(t1 = BlockingTask.new(:a))
         @q.submit(t2 = BlockingTask.new(:b))
         1 until $started_tasks.include?(:a)
-        @q.pending.include?(t1).should be_false
+        @q.pending.include?(t1).should be false
       end
       
       it "should not include completed tasks" do
         @q.submit(t1 = QuickTask.new(:a))
         @q.submit(t2 = BlockingTask.new(:b))
         1 until $started_tasks.include?(:b)
-        @q.pending.include?(t1).should be_false
+        @q.pending.include?(t1).should be false
       end
       
       it "should tell you when it was enqueued" do
@@ -128,14 +128,14 @@ describe Redcar::TaskQueue do
         @q.submit(t1 = QuickTask.new(:a))
         @q.submit(t2 = BlockingTask.new(:b))
         1 until $started_tasks.include?(:b)
-        @q.completed.include?(t1).should be_true
+        @q.completed.include?(t1).should be true
       end
       
       it "should not include in process tasks" do
         @q.submit(t1 = QuickTask.new(:a))
         @q.submit(t2 = BlockingTask.new(:b))
         1 until $started_tasks.include?(:b)
-        @q.completed.include?(t2).should be_false
+        @q.completed.include?(t2).should be false
       end
       
       it "should not include in pending tasks" do
@@ -143,7 +143,7 @@ describe Redcar::TaskQueue do
         @q.submit(t2 = BlockingTask.new(:b))
         @q.submit(t3 = BlockingTask.new(:c))
         1 until $started_tasks.include?(:b)
-        @q.completed.include?(t3).should be_false
+        @q.completed.include?(t3).should be false
       end
       
       it "should tell you when it was completed" do

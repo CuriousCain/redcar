@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Redcar::Application do
   it "has a name" do
-    Redcar::Application::NAME.should_not be_nil
+    Redcar::Application::NAME.not_to be nil
   end
   
   it "has a default instance" do

@@ -16,11 +16,11 @@ class Redcar::Project
     describe "for a directory" do
     
       it "tells you the directory exists" do
-        @mirror.exists?.should be_true
+        @mirror.exists?.should be true
       end
       
       it "tells you it has changed" do
-        @mirror.changed?.should be_true
+        @mirror.changed?.should be true
       end
       
       describe "top level contents" do
@@ -32,18 +32,18 @@ class Redcar::Project
         
         it "files are leaf nodes" do
           top_nodes = @mirror.top
-          top_nodes.detect {|n| n.text == "Carnegie"}.leaf?.should be_true
-          top_nodes.detect {|n| n.text == "Rockefeller"}.leaf?.should be_true
+          top_nodes.detect {|n| n.text == "Carnegie"}.leaf?.should be true
+          top_nodes.detect {|n| n.text == "Rockefeller"}.leaf?.should be true
         end
         
         it "subdirectories are not leaf nodes" do
           top_nodes = @mirror.top
-          top_nodes.detect {|n| n.text == "subdir"}.leaf?.should be_false
+          top_nodes.detect {|n| n.text == "subdir"}.leaf?.should be false
         end
         
         it "isn't changed after you have got the top nodes" do
           @mirror.top
-          @mirror.changed?.should be_false
+          @mirror.changed?.should be false
         end
         
         describe "sub directory contents" do

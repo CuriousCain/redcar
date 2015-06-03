@@ -20,7 +20,7 @@ describe PersistentCache do
   end
   
   def cache_file_exists?(name)
-    File.exist?(File.join(File.dirname(__FILE__), "scratch", name)).should be_true
+    File.exist?(File.join(File.dirname(__FILE__), "scratch", name)).should be true
   end
 
   def expect_no_calculation
@@ -28,7 +28,7 @@ describe PersistentCache do
   end
   
   def it_should_have_calculated
-    @calculation.should be_true
+    @calculation.should be true
   end
   
   def reset_calculation
