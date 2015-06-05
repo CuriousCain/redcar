@@ -66,7 +66,7 @@ describe Redcar::NavigationHistory do
   
   it "can backward?" do
     @history.save(@doc)
-    @history.can_backward?.should be_true
+    @history.can_backward?.should be true
   end
   
   it "can forward?" do
@@ -75,7 +75,7 @@ describe Redcar::NavigationHistory do
     @history.save(@doc)
     @history.size.should == 2
     @history.current -= 2
-    @history.can_forward?.should be_true
+    @history.can_forward?.should be true
   end
   
   it "should not exceed max history size" do

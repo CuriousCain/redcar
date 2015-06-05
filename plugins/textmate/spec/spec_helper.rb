@@ -113,7 +113,7 @@ def create_fixtures
 end
 
 def delete_fixtures
-  FileUtils.rm_r(textmate_fixtures)
+  FileUtils.rm_rf(textmate_fixtures)
   fixtures.each {|p| FileUtils.rm_rf(p)}
   @fixtures = nil
 end

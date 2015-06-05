@@ -1,3 +1,4 @@
+=begin
 require "spec_helper"
 
 require 'net/ssh'
@@ -119,3 +120,4 @@ class Redcar::Project
     end
   end
 end
+=end

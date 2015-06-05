@@ -14,7 +14,7 @@ describe Redcar::Command do
     end
 
     it "is recordable by default" do
-      MyCommand.record?.should be_true
+      MyCommand.record?.should be true
     end
     
     it "has an environment" do
@@ -31,7 +31,7 @@ describe Redcar::Command do
     end
     
     it "is not recordable" do
-      MyNonRecordableCommand.record?.should be_false
+      MyNonRecordableCommand.record?.should be false
     end
   end
   

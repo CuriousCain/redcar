@@ -7,8 +7,8 @@ describe Redcar::Notebook do
     
     before do
       @notebook = Redcar::Notebook.new(nil)
-      @app = mock
-      Redcar.stub!(:app).and_return(@app)
+      @app = Redcar::Application.new
+      allow(Redcar).to receive(:app).and_return(@app)
     end
     
     it "reports its length" do
@@ -20,7 +20,7 @@ describe Redcar::Notebook do
       @notebook.add_listener(:tab_added) do |tab|
         tab_result = tab
       end
-      @app.should_receive(:call_on_plugins)
+      allow(@app).to receive(:call_on_plugins)
       
       @notebook.new_tab NotebookTestTab
       

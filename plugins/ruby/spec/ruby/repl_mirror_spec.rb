@@ -111,7 +111,7 @@ RUBY
 
         it "should emit changed event when text is executed" do
           commit_test_text1
-          @changed_event.should be_true
+          @changed_event.should be true
         end
 
         it "should now have the command and the result at the end" do
@@ -140,7 +140,7 @@ RUBY
       end
 
       it "should not have changed" do
-        @mirror.changed?.should be_false
+        @mirror.changed?.should be false
       end
 
       it "should display the history and prompt correctly" do

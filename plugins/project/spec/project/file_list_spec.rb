@@ -35,12 +35,12 @@ describe FileList do
     end
     
     it "should return a list of files in the directory" do
-      @file_list.all_files.include?(relative_path("README")).should be_true
-      @file_list.all_files.include?(relative_path("lib", "foo_lib.rb")).should be_true
+      @file_list.all_files.include?(relative_path("README")).should be true
+      @file_list.all_files.include?(relative_path("lib", "foo_lib.rb")).should be true
     end
 
     it "should return a list of files in a symlinked directory" do
-      @file_list.all_files.include?(relative_path("lib_symlink", "foo_lib.rb")).should be_true
+      @file_list.all_files.include?(relative_path("lib_symlink", "foo_lib.rb")).should be true
     end
   end
   
@@ -71,19 +71,19 @@ describe FileList do
       describe "on general update" do
         it "should add the file to the list" do
           @file_list.update
-          @file_list.all_files.include?(@file_name).should be_true
+          @file_list.all_files.include?(@file_name).should be true
         end
         
         it "should be changed_since" do
           @file_list.update
-          @file_list.changed_since(@time).keys.include?(@file_name).should be_true
+          @file_list.changed_since(@time).keys.include?(@file_name).should be true
         end
       end
       
       describe "on specific update" do
         it "should add the file to the list" do
           @file_list.update(@file_name)
-          @file_list.all_files.include?(@file_name).should be_true
+          @file_list.all_files.include?(@file_name).should be true
         end
         
         it "should not add other new files to the list" do
@@ -91,8 +91,8 @@ describe FileList do
           file_name2 = File.expand_path(File.join(@dirname, "Kurzweil"))
           
           @file_list.update(@file_name)
-          @file_list.all_files.include?(@file_name).should be_true
-          @file_list.all_files.include?(file_name2).should be_false
+          @file_list.all_files.include?(@file_name).should be true
+          @file_list.all_files.include?(file_name2).should be false
         end
         
         it "should not remove files that are already there" do
@@ -100,8 +100,8 @@ describe FileList do
           file_name2 = File.expand_path(File.join(@dirname, "Kurzweil"))
           
           @file_list.update(file_name2)
-          @file_list.all_files.include?(file_name2).should be_true
-          @file_list.all_files.include?(File.expand_path(File.join(@dirname, "Carnegie"))).should be_true
+          @file_list.all_files.include?(file_name2).should be true
+          @file_list.all_files.include?(File.expand_path(File.join(@dirname, "Carnegie"))).should be true
         end
       end
     end
@@ -117,12 +117,12 @@ describe FileList do
       
       it "should still be in the file list" do
         @file_list.update
-        @file_list.all_files.include?(@file_name).should be_true
+        @file_list.all_files.include?(@file_name).should be true
       end
       
       it "should be changed since" do
         @file_list.update
-        @file_list.changed_since(@time).keys.include?(@file_name).should be_true
+        @file_list.changed_since(@time).keys.include?(@file_name).should be true
       end
     end
     
@@ -134,7 +134,7 @@ describe FileList do
       
       it "should not be in the file list" do
         @file_list.update
-        @file_list.all_files.include?(@file_name).should be_false
+        @file_list.all_files.include?(@file_name).should be false
       end
     end
   end

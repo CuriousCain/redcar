@@ -13,7 +13,7 @@ describe Redcar::Window do
         @called_menu_changed = true
       end
       @window.refresh_menu
-      @called_menu_changed.should be_true
+      @called_menu_changed.should be true
     end
 
     it "has a treebook" do

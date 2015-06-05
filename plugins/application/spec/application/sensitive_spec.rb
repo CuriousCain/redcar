@@ -79,7 +79,7 @@ describe Redcar::Sensitive do
     
     it "knows when it's sensitivity has changed" do
       deactivate_open_tab
-      @obj.my_activeness_changed.should be_true
+      @obj.my_activeness_changed.should be true
     end
   end
   
@@ -108,7 +108,7 @@ describe Redcar::Sensitive do
     it "becomes inactive when one of its sensitivities becomes inactive" do
       deactivate_open_tab
       @obj.should_not be_active
-      @obj.my_activeness_changed.should be_true
+      @obj.my_activeness_changed.should be true
     end
     
     it "remains inactive when both of its sensitivities becomes inactive" do
@@ -116,7 +116,7 @@ describe Redcar::Sensitive do
       @obj.my_activeness_changed = false
       deactivate_is_tuesday
       @obj.should_not be_active
-      @obj.my_activeness_changed.should be_false
+      @obj.my_activeness_changed.should be false
     end
     
     it "remains inactive when one of its sensitivities becomes active again" do
@@ -125,7 +125,7 @@ describe Redcar::Sensitive do
       @obj.my_activeness_changed = false
       activate_is_tuesday
       @obj.should_not be_active
-      @obj.my_activeness_changed.should be_false
+      @obj.my_activeness_changed.should be false
     end
 
     it "becomes active when both of its sensitivities become active again" do
@@ -135,7 +135,7 @@ describe Redcar::Sensitive do
       @obj.my_activeness_changed = false
       activate_open_tab
       @obj.should be_active
-      @obj.my_activeness_changed.should be_true
+      @obj.my_activeness_changed.should be true
     end
   end
     
