@@ -41,7 +41,7 @@ module Redcar
           elsif key_string =~ /End$/
             value += Swt::SWT::END
           else
-            value += key_string[-1].to_i
+            value += key_string[-1].ord
           end
         end
         
