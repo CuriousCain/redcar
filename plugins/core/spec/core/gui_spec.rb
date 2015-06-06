@@ -7,17 +7,17 @@ describe Redcar::Gui do
   end
   
   it "has a name" do
-    @gui.name.should == "test gui"
+    expect(@gui.name).to eq("test gui")
   end
   
   it "registers itself" do
-    Redcar::Gui.all.map {|g| g.name} .should == ["test gui"]
+    expect(Redcar::Gui.all.map {|g| g.name}).to eq(["test gui"])
   end
   
   it "delegates start and stop to the event loop" do
-    event_loop = mock("Event Loop")
-    event_loop.should_receive(:start)
-    event_loop.should_receive(:stop)
+    event_loop = Swt::EventLoop.new
+    allow(event_loop).to receive(:start)
+    allow(event_loop).to receive(:stop)
     
     @gui.register_event_loop(event_loop)
     

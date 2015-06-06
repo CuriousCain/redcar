@@ -14,18 +14,19 @@ describe Redcar::TaskQueue do
   describe "running tasks" do
     it "should accept tasks and call them" do
       @q.submit(QuickTask.new(101)).get
-      $started_tasks.should == [101]
+      expect($started_tasks).to eq([101])
     end
     
     it "should call tasks in order" do
       @q.submit(QuickTask.new(101))
       @q.submit(QuickTask.new(102))
-      @q.submit(QuickTask.new(103)).get
-      $started_tasks.should == [101, 102, 103]
+      @q.submit(QuickTask.new(103))
+      @q.submit(QuickTask.new(104))
+      expect($started_tasks).to eq([101, 102, 103, 104])
     end
     
     it "should return the result of the Task execute method" do
-      @q.submit(QuickTask.new(103)).get.should == :hiho
+      expect(@q.submit(QuickTask.new(103)).get).to eq(:hiho)
     end
   end
   
@@ -48,19 +49,19 @@ describe Redcar::TaskQueue do
       task.cancel
       $wait_task_finish = true
       sleep 0.1
-      $started_tasks.should == [101, 102]
-      @q.pending.should be_empty
-      task.should be_cancelled
+      expect($started_tasks).to eq([101, 102])
+      expect(@q.pending).to be_empty
+      expect(task).to be_cancelled
     end
     
     it "can cancel all pending tasks" do
       @q.submit(WaitTask.new(102))
-      @q.submit(task1 = QuickTask.new(103))
-      @q.submit(task2 = QuickTask.new(104))
+      @q.submit(QuickTask.new(103))
+      @q.submit(QuickTask.new(104)).get
       1 until $started_tasks.include?(102)
       @q.cancel_all
       $wait_task_finish = true
-      $started_tasks.should == [102]
+      expect($started_tasks).to eq([102])
     end
   end
   
@@ -95,9 +96,12 @@ describe Redcar::TaskQueue do
         @q.submit(t1 = BlockingTask.new(:a))
         @q.submit(t2 = BlockingTask.new(:b))
         1 until $started_tasks.include?(:a)
-        t2.should be_pending
-        t2.should_not be_completed
-        t2.should_not be_in_process
+        expect(t2).to be_pending
+        expect(t2).to_not be_completed
+        expect(t2).to_not be_in_process
+        #t2.should be_pending
+        #t2.should_not be_completed
+        #t2.should_not be_in_process
       end
     end
     

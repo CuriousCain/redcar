@@ -18,7 +18,6 @@ module Redcar
         @pending << task
         task._queue        = self
         task.enqueue_time = Time.now
-        puts(task)
 
         @executor = @executors.new_single_thread_executor
         @executor.submit task

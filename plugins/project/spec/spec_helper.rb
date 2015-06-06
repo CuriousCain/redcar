@@ -14,7 +14,8 @@ def write_dir_contents(dirname, files)
   end
 end
 
-def write_file(dirname, file, content)
+
+def write_test_file(dirname, file, content)
   File.open(File.join(dirname, file), "w") {|f| f.puts content }
 end
 

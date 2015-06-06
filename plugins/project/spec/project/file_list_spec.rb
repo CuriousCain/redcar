@@ -1,4 +1,4 @@
-
+require 'pp'
 require "spec_helper"
 
 FileList = Redcar::Project::FileList
@@ -39,14 +39,16 @@ describe FileList do
       @file_list.all_files.include?(relative_path("lib", "foo_lib.rb")).should be true
     end
 
+    # I believe this may be platform-specific
+    # A failure may occur when the symlink is not re-created when running the tests on another OS
     it "should return a list of files in a symlinked directory" do
-      @file_list.all_files.include?(relative_path("lib_symlink", "foo_lib.rb")).should be true
+      expect(@file_list.all_files.include?(relative_path("lib_symlink", "foo_lib.rb"))).to be true
     end
   end
   
   describe "update information" do
     before do
-      @dirname = "project_spec_testdir"
+      @dirname = File.join(__dir__, "project_spec_testdir")
       @files = {"Carnegie"    => "steel", 
                 "Rockefeller" => "oil",
                 "subdir"      => {
@@ -56,7 +58,7 @@ describe FileList do
       @file_list = FileList.new(@dirname)
       @file_list.update
     end
-    
+
     after do
       FileUtils.rm_r(@dirname)
     end
@@ -64,14 +66,14 @@ describe FileList do
     describe "after files have been added" do
       before do
         @time = Time.now
-        write_file(@dirname, "Branson", "balloons")
+        write_test_file(@dirname, "Branson", "balloons")
         @file_name = File.expand_path(File.join(@dirname, "Branson"))
       end
       
       describe "on general update" do
         it "should add the file to the list" do
           @file_list.update
-          @file_list.all_files.include?(@file_name).should be true
+          expect(@file_list.all_files.include?(@file_name)).to be true
         end
         
         it "should be changed_since" do
