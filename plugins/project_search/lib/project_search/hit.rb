@@ -5,9 +5,11 @@ class ProjectSearch
     
     def initialize(file, line_num, line, regex, 
         pre_context, post_context)
-      @file, @line_num, @line, @regex = file, line_num, line, regex
+      @file, @line, @regex = file, line, regex
       @pre_context = pre_context
       @post_context = post_context
+
+      @line_num = line_num
     end
     
     def line(start_with=nil, end_with=nil)

@@ -89,7 +89,7 @@ describe FileList do
         end
         
         it "should not add other new files to the list" do
-          write_file(@dirname, "Kurzweil", "theories")
+          write_test_file(@dirname, "Kurzweil", "theories")
           file_name2 = File.expand_path(File.join(@dirname, "Kurzweil"))
           
           @file_list.update(@file_name)
@@ -98,7 +98,7 @@ describe FileList do
         end
         
         it "should not remove files that are already there" do
-          write_file(@dirname, "Kurzweil", "theories")
+          write_test_file(@dirname, "Kurzweil", "theories")
           file_name2 = File.expand_path(File.join(@dirname, "Kurzweil"))
           
           @file_list.update(file_name2)
@@ -112,7 +112,7 @@ describe FileList do
       before do
         @time = Time.now
         sleep 1
-        write_file(@dirname, "Carnegie", "peace")
+        write_test_file(@dirname, "Carnegie", "peace")
         @file_name = File.expand_path(File.join(@dirname, "Carnegie"))
       end
 

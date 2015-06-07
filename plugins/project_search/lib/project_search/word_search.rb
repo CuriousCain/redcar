@@ -46,7 +46,7 @@ class ProjectSearch
       hits = []
       doc_ids.each do |doc_id|
         next unless File.exist?(doc_id)
-        contents = File.read(doc_id).split(/\n|\r/)
+        contents = File.read(doc_id).split(/\r\n|\n|\r/)
         pre_context = []
         hits_needing_post_context = []
         remove_hits = []

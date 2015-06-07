@@ -49,8 +49,9 @@ describe ProjectSearch::WordSearch do
     
     it "should find every occurrence" do
       results = make_search("xxx").results
-      results.length.should == 7
-      results.map {|r| r.line_num}.should == [16, 17, 19, 22, 26, 31, 37]
+      p "RESULTS: #{results.map {|r| r.line}}"
+      expect(results.length).to eq(7)
+      expect(results.map {|r| r.line_num}).to eq([16, 17, 19, 22, 26, 31, 37])
     end
     
     it "should ignore case if asked" do
