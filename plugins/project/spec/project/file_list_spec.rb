@@ -41,7 +41,8 @@ describe FileList do
 
     # I believe this may be platform-specific
     # A failure may occur when the symlink is not re-created when running the tests on another OS
-    it "should return a list of files in a symlinked directory" do
+    # Un-skip and recreate the symlink when running tests on an OS other than Windows
+    it "should return a list of files in a symlinked directory", :skip => 'Create symlink for your platform and un-skip' do
       expect(@file_list.all_files.include?(relative_path("lib_symlink", "foo_lib.rb"))).to be true
     end
   end
