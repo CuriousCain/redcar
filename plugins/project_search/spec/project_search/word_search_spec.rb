@@ -2,7 +2,20 @@
 require "spec_helper"
 
 describe ProjectSearch::WordSearch do
+  before(:all) do
+    test_file = File.expand_path(project_search_fixture_dir + "/jscar.txt")
+
+    File.open(test_file, "w") do |fout|
+      fout.write "aa testword bb"
+    end
+  end
+
   after(:all) do
+    test_file = File.expand_path(project_search_fixture_dir + "/jscar.txt")
+    if File.exists? test_file
+      FileUtils.rm(test_file)
+    end
+
     FileUtils.rm_rf(project_search_fixture_dir + "/.redcar")
     ProjectSearch.indexes.clear
   end
@@ -49,7 +62,6 @@ describe ProjectSearch::WordSearch do
     
     it "should find every occurrence" do
       results = make_search("xxx").results
-      p "RESULTS: #{results.map {|r| r.line}}"
       expect(results.length).to eq(7)
       expect(results.map {|r| r.line_num}).to eq([16, 17, 19, 22, 26, 31, 37])
     end
@@ -122,19 +134,16 @@ describe ProjectSearch::WordSearch do
   describe "when there are changes to the file system" do
     it "should not return results for deleted files" do
       test_file = File.expand_path(project_search_fixture_dir + "/jscar.txt")
-      File.open(test_file, "w") do |fout|
-        fout.puts "aa testword bb"
-      end
-      
+
       # indexing should have happened by now
       search = make_search("testword")
-      search.results.map {|r| File.expand_path(r.file)}.should include(test_file)
-      
-      FileUtils.rm_rf(test_file)
+      expect(search.results.map {|r| File.expand_path(r.file)}).to include(test_file)
+
+      FileUtils.rm(test_file)
       
       # should still work but should not include the result
       search = make_search("testword")
-      search.results.map {|r| File.expand_path(r.file)}.should_not include(test_file)
+      expect(search.results.map {|r| File.expand_path(r.file)}).not_to include(test_file)
     end
   end
   

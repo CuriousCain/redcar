@@ -7,7 +7,7 @@ module Redcar
       
       def self.current_environment
         if Redcar.app
-          win = Redcar.app.focussed_window        
+          win = Redcar.app.focussed_window
           tab = Redcar.app.focussed_notebook_tab
           { :win => win,
             :tab => tab }

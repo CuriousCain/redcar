@@ -67,9 +67,12 @@ describe Redcar::Command do
     end
     
     it "should have _finished called after the command runs" do
+      allow(Redcar.app).to receive(:focussed_window)
+      allow(Redcar.app).to receive(:focussed_notebook_tab)
+
       command_instance = FinishableCommand.new
       command_instance.run
-      command_instance.stuff.should == [:executed, :finished]
+      expect(command_instance.stuff).to eq([:executed, :finished])
     end
   end
 end

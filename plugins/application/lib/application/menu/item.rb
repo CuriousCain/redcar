@@ -30,8 +30,9 @@ module Redcar
       #              the menu is displayed to determine whether this item is checked
       def initialize(text, command_or_options={}, &block)
         @text = text
-        
-        if command_or_options.respond_to?('[]')
+
+        # Check if the responds to the hash's each method
+        if command_or_options.respond_to?(:each)
           options = command_or_options
           @command = options[:command] || block
           @priority = options[:priority]
@@ -45,7 +46,7 @@ module Redcar
           @enabled = true
           @command = command_or_options || block
         end
-        
+
         @priority ||= Menu::DEFAULT_PRIORITY
       end
       
