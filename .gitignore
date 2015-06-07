@@ -40,3 +40,4 @@ tmp
 vendor/
 .idea/
 .jrubyfx_cache/
+lib_symlink
