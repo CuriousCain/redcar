@@ -2,7 +2,7 @@ require 'jrubyfx'
 require 'java'
 require_relative 'keybindings/keybindings'
 
-fxml_root __dir__
+fxml_root Redcar::FXML_Root_Files.directory
 
 java_import java.lang.Runnable
 java_import javafx.application.Platform

@@ -1,7 +1,7 @@
 require 'jrubyfx'
 require 'java'
 
-fxml_root File.dirname(__FILE__)
+fxml_root Redcar::FXML_Root_Files.directory
 
 java_import java.lang.Runnable
 java_import javafx.application.Platform
