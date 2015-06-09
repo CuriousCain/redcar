@@ -1,6 +1,8 @@
 require 'jrubyfx'
 require 'java'
+
 require_relative 'keybindings/keybindings'
+require_relative 'plugins/plugins'
 
 fxml_root Redcar::FXML_Root_Files.directory
 
@@ -58,6 +60,8 @@ class OptionsItemListener
     case new_value.get_value
       when 'Keybindings'
         @options_view.get_children.add KeybindingsController.new
+      when 'Plugins'
+        @options_view.get_children.add PluginsController.new
     end
   end
 end
