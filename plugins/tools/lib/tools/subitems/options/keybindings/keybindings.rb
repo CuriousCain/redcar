@@ -13,7 +13,7 @@ java_import javafx.scene.input.KeyCode
 java_import javafx.event.EventHandler
 
 class KeybindingsController < AnchorPane
-  def initialize()
+  def initialize
     super
 
     data_list = FXCollections.observable_array_list

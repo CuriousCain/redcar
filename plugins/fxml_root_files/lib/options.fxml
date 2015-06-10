@@ -15,7 +15,7 @@
                           <TreeItem fx:id="rootItem" expanded="true" value="ROOT">
                               <children>
                                   <TreeItem fx:id="keybindingsItem" value="Keybindings" />
-                                  <TreeItem fx:id="appearanceItem" value="Appearance" />
+                                  <TreeItem fx:id="pluginsItem" value="Plugins" />
                               </children>
                           </TreeItem>
                       </root>
