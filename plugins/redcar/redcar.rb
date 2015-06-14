@@ -698,8 +698,6 @@ module Redcar
         link "Ctrl+Shift+P", PrintScopeCommand
         link "Cmd+Shift+H",  Application::ToggleTreesCommand
 
-        # link "Cmd+Shift+R",     PluginManagerUi::ReloadLastReloadedCommand
-
         #Textmate.attach_keybindings(self, :osx)
 
         # map SelectTab<number>Command

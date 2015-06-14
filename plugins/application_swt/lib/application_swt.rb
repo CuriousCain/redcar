@@ -187,9 +187,7 @@ module Redcar
       end
 
       def handle_event(e)
-        if    @name == :prefs
-          Redcar::PluginManagerUi::OpenPreferencesCommand.new.run
-        elsif @name == :about
+        if @name == :about
           Redcar::Top::AboutCommand.new.run
         elsif @name == :quit
           unless Redcar.app.events.ignore?(:application_close, Redcar.app)

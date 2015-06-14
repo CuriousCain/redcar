@@ -68,10 +68,10 @@ end
 #
 # and so on.
 module Redcar
-  VERSION         = '0.15.0dev' # also change in the gemspec!
+  VERSION         = '0.15.2dev' # also change in the gemspec!
   VERSION_MAJOR   = 0
   VERSION_MINOR   = 15
-  VERSION_RELEASE = 0
+  VERSION_RELEASE = 2 
 
   ENVIRONMENTS = [:user, :debug, :test]
 
@@ -149,9 +149,9 @@ module Redcar
   def self.load_plugins
     begin
       exit if ARGV.include?("--quit-after-splash")
-      
+
       plugin_manager.load
-      
+
       if plugin_manager.unreadable_definitions.any?
         puts "Couldn't read definition files:  " + plugin_manager.unreadable_definitions.map {|pd| pd.name}.join(", ")
       end
@@ -167,6 +167,7 @@ module Redcar
       puts e.message
       puts e.backtrace
     end
+
   end
 
   # Pulls the list of plugins the user has selected to disable from

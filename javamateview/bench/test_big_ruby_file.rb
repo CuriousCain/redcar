@@ -643,8 +643,6 @@ module Redcar
         link "Cmd+Alt+O",       SwitchNotebookCommand
         link "Cmd+Shift+[",     SwitchTabDownCommand
         link "Cmd+Shift+]",     SwitchTabUpCommand
-
-        link "Cmd+Shift+R",     PluginManagerUi::ReloadLastReloadedCommand
         
         link "Cmd+Alt+S", Snippets::OpenSnippetExplorer
         #Textmate.attach_keybindings(self, :osx)
@@ -694,7 +692,6 @@ module Redcar
         
         link "Ctrl+Page Up",       SwitchTabDownCommand
         link "Ctrl+Page Down",     SwitchTabUpCommand
-        link "Ctrl+Shift+R",     PluginManagerUi::ReloadLastReloadedCommand
         
         link "Ctrl+Alt+S", Snippets::OpenSnippetExplorer
         #Textmate.attach_keybindings(self, :linux)
@@ -786,8 +783,6 @@ module Redcar
           item "Next Tab", SwitchTabUpCommand
         end
         sub_menu "Plugins" do
-          item "Plugin Manager", PluginManagerUi::OpenCommand
-          item "Reload Again", PluginManagerUi::ReloadLastReloadedCommand
           item("Edit Preferences") { Project::Manager.open_project_for_path(Redcar::Plugin::Storage.storage_dir) }
           separator
         end

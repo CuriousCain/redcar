@@ -12,6 +12,11 @@ Version 1.0 (TBA)
  * Add windows batch file for easily starting redcar with arguments (Chad Gorshing)
  * Close tab when clicked with the middle mouse button (Delisa Mason)
 
+Version 0.15.2
+================================
+ * Implement basic plugins screen in preferences menu (Joel Lord)
+ * Remove old html-based plugins view (Joel Lord)
+
 Version 0.14.4a (5th June 2015)
 ================================
  * Fixed tests, mainly deprecations (Joel Lord)

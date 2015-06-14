@@ -61,7 +61,7 @@ class OptionsItemListener
       when 'Keybindings'
         @options_view.get_children.add KeybindingsController.new
       when 'Plugins'
-        @options_view.get_children.add PluginsController.new
+        @options_view.get_children.add Plugins_Option::PluginsController.new
     end
   end
 end
