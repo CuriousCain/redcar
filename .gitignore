@@ -41,3 +41,5 @@ vendor/
 .idea/
 .jrubyfx_cache/
 lib_symlink/
+plugins/core/spec/core/scratch
+plugins/textmate/spec/fixtures
