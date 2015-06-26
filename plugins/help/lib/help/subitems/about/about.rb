@@ -7,32 +7,38 @@ java_import java.lang.Runnable
 java_import javafx.application.Platform
 java_import javafx.stage.Stage
 
-class AboutCommand < Redcar::Command
-  def execute
-    Platform.run_later AboutWindow.new
-  end
-end
+module Redcar
+  module Help
+    class AboutCommand < Redcar::Command
+      def execute
+        Platform.run_later AboutWindow.new
+      end
+    end
 
-class AboutWindow
-  include Runnable
+    private
 
-  def run
-    stage = Stage.new
-    stage.fxml AboutController
-    stage.title = "About Redcar"
+    class AboutWindow
+      include Runnable
 
-    stage.show
-  end
-end
+      def run
+        stage = Stage.new
+        stage.fxml AboutController
+        stage.title = "About Redcar"
 
-class AboutController
-  include JRubyFX::Controller
-  fxml 'about.fxml'
+        stage.show
+      end
+    end
 
-  def initialize
-    @lblVersion.text = "Version: #{Redcar::VERSION}"
-    @lblRuby.text = "Ruby Version: #{RUBY_VERSION}"
-    @lblJruby.text = "JRuby Version: #{JRUBY_VERSION}"
-    @lblEnvironment.text = "Redcar Environment: #{Redcar.environment}"
+    class AboutController
+      include JRubyFX::Controller
+      fxml 'about.fxml'
+
+      def initialize
+        @lblVersion.text = "Version: #{Redcar::VERSION}"
+        @lblRuby.text = "Ruby Version: #{RUBY_VERSION}"
+        @lblJruby.text = "JRuby Version: #{JRUBY_VERSION}"
+        @lblEnvironment.text = "Redcar Environment: #{Redcar.environment}"
+      end
+    end
   end
 end

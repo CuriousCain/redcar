@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#new_file_action" text="New File" />
+               </items>
+            </Menu>
+            <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu fx:id="projectMenu" mnemonicParsing="false" text="Project">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+            <Menu fx:id="debugMenu" mnemonicParsing="false" text="Debug">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+            <Menu fx:id="viewMenu" mnemonicParsing="false" text="View">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+            <Menu fx:id="bundlesMenu" mnemonicParsing="false" text="Bundles">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+            <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#online_help_action" text="Online Help" />
+                  <MenuItem mnemonicParsing="false" onAction="#submit_bug_action" text="Submit a Bug" />
+                  <MenuItem mnemonicParsing="false" onAction="#about_action" text="About" />
+               </items>
+            </Menu>
+            <Menu fx:id="pluginsMenu" mnemonicParsing="false" text="Plugins">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+            <Menu fx:id="toolsMenu" mnemonicParsing="false" text="Tools">
+               <items>
+                  <MenuItem fx:id="optionsItem" mnemonicParsing="false" onAction="#options_action" text="Options" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <TabPane fx:id="editorTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS">
+        <tabs>
+        </tabs>
+      </TabPane>
+   </children>
+</VBox>

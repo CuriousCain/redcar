@@ -1,9 +1,11 @@
 require 'jrubyfx'
 require 'java'
+
+require_relative 'redcar_ui/fx_ui'
+
 java_import javafx.event.EventHandler
 java_import javafx.stage.Stage
 java_import javafx.stage.StageStyle
-
 
 module Redcar
   def self.safely(text=nil)
@@ -29,26 +31,6 @@ module Redcar
       end
     end
     result
-  end
-
-  module JApplication
-    class App < JRubyFX::Application
-      def start(stage)
-        stage.init_style StageStyle::TRANSPARENT
-        stage.height = 1
-        stage.width = 1
-        stage.show
-        stage.set_on_close_request(CloseRequest.new)
-      end
-    end
-
-    class CloseRequest
-      include EventHandler
-
-      def handle(e)
-        e.consume
-      end
-    end
   end
 
   module Top
@@ -1004,7 +986,7 @@ module Redcar
 
     def self.start(args=[])
       Thread.new do
-        JApplication::App.launch
+        FX_UI::App.launch
       end
 
       begin

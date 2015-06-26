@@ -1,12 +1,14 @@
 require 'tools/subitems/options/options'
 
 module Redcar
-  class Tools
-    def self.menus
-      Redcar::Menu::Builder.build do
-        sub_menu 'Tools' do
-          group(:priority => :last) do
-            item 'Options', :command => OptionsCommand
+  module Tools
+    class ToolsMenu
+      def self.menus
+        Redcar::Menu::Builder.build do
+          sub_menu 'Tools' do
+            group(:priority => :last) do
+              item 'Options', :command => Options::OptionsCommand
+            end
           end
         end
       end

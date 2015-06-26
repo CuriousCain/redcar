@@ -10,5 +10,7 @@ Plugin.define do
                "Auto Completer",    ">0",
                "auto_indenter",     ">0",
                "document_search",   ">0",
-               "HTML View",         ">=0.3.2"
+               "HTML View",         ">=0.3.2",
+               "FXML_Root_Files",   ">0",
+               "File Menu",         ">0"
 end
